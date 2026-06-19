@@ -31,7 +31,7 @@ export default function Hero() {
             <em className="not-italic text-accent">Master it in minutes.</em>
           </h1>
           <p className="text-lg text-muted leading-relaxed max-w-120 mb-10 mx-auto lg:mx-0">
-            StudyFlow reads your documents and instantly builds quizzes,
+            StudyFire reads your documents and instantly builds quizzes,
             flashcards, and a personal tutor — so you spend less time
             highlighting and more time actually learning.
           </p>

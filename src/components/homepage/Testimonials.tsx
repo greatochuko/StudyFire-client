@@ -59,7 +59,7 @@ export default function Testimonials() {
             ★★★★★
           </div>
           <p className="font-serif text-sm text-text italic leading-relaxed mb-5">
-            "I have 12 final exams coming up. StudyFlow basically turned my
+            "I have 12 final exams coming up. StudyFire basically turned my
             lecture slides into a whole study program. The spaced rep flashcards
             are surprisingly good."
           </p>

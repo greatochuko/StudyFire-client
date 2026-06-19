@@ -84,7 +84,7 @@ export default function HowItWorks() {
             {
               num: 2,
               title: "AI reads and understands it",
-              desc: "StudyFlow maps the document's concepts, key terms, and relationships — not just keywords. This takes about 10 seconds.",
+              desc: "StudyFire maps the document's concepts, key terms, and relationships — not just keywords. This takes about 10 seconds.",
             },
             {
               num: 3,

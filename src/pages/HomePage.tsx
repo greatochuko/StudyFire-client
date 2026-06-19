@@ -8,7 +8,7 @@ import Testimonials from "../components/homepage/Testimonials";
 import Pricing from "../components/homepage/Pricing";
 import CTA from "../components/homepage/CTA";
 
-export default function StudyFlowLanding(): React.JSX.Element {
+export default function StudyFireLanding(): React.JSX.Element {
   return (
     <>
       <Hero />

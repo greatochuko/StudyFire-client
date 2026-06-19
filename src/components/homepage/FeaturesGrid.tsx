@@ -50,7 +50,7 @@ export default function FeaturesGrid(): React.JSX.Element {
   return (
     <section className="px-6 md:px-12 py-25 max-w-300 mx-auto" id="features">
       <p className="text-[0.75rem] font-bold tracking-widest uppercase text-accent mb-4">
-        What StudyFlow does
+        What StudyFire does
       </p>
       <h2 className="font-serif text-4xl md:text-5xl leading-tight tracking-tight mb-5 text-text">
         Three tools.
