@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 
-export default function LoginPage(): React.JSX.Element {
+export default function SignupPage(): React.JSX.Element {
+  const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>): void => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setIsLoading(true);
-    // Handle auth submission logic here
+    // Handle registration submission logic here
     setTimeout(() => setIsLoading(false), 1200);
   };
 
   return (
-    <div className="bg-bg flex-1 text-text font-sans antialiased selection:bg-accent/15  grid grid-cols-1 lg:grid-cols-2 overflow-x-hidden">
-      {/* ── LEFT COLUMN: AUTH FORM ── */}
+    <div className="bg-bg flex-1 text-text font-sans antialiased selection:bg-accent/15 grid grid-cols-1 lg:grid-cols-2 overflow-x-hidden">
+      {/* ── LEFT COLUMN: AMBIENT DISPLAY / VALUE SHOWCASE ── */}
       <div
-        className="hidden  lg:flex flex-col justify-center items-center p-12 relative overflow-hidden"
+        className="hidden lg:flex flex-col justify-center items-center p-12 relative overflow-hidden"
         style={{
           background:
             "radial-gradient(circle at 50% 40%, rgba(99,102,241,0.06) 0%, transparent 65%)",
@@ -33,74 +34,74 @@ export default function LoginPage(): React.JSX.Element {
           <div className="bg-surface border border-border/80 rounded-2xl shadow-2xl shadow-gray-200/60 p-5 text-left mb-10 transform scale-102 hover:scale-104 transition duration-500">
             <div className="flex items-center justify-between pb-3.5 border-b border-border/60 mb-4">
               <div className="flex items-center gap-2">
-                <span className="text-md">📑</span>
+                <span className="text-md">⚡</span>
                 <div>
                   <h4 className="text-xs font-bold text-text leading-tight">
-                    MCAT Biochemistry — Ch.4
+                    Instant Workspace Initialization
                   </h4>
                   <p className="text-[0.65rem] text-muted font-medium">
-                    Uploaded 10 seconds ago
+                    Account Status: Pending Creation
                   </p>
                 </div>
               </div>
-              <span className="text-[0.65rem] font-bold text-green-custom bg-green-custom/10 px-2 py-0.5 rounded-md uppercase tracking-wider">
-                Ready
+              <span className="text-[0.65rem] font-bold text-accent bg-accent/10 px-2 py-0.5 rounded-md uppercase tracking-wider">
+                Free Tier
               </span>
             </div>
 
             <div className="p-3 bg-bg rounded-xl border border-border/40 text-[0.72rem] text-muted leading-relaxed">
               <strong className="text-text block mb-1 font-serif text-sm">
-                🧠 Generated Study Metric:
+                🎁 Included Welcome Benefits:
               </strong>
-              "We found 14 primary terms, 4 pathways, and mapped 25 spaced
-              repetition modules across 3 difficulty variants."
+              Full access to AI quiz builds, contextual document isolation
+              engines, up to 3 active libraries, and custom spaced repetition
+              trackers.
             </div>
           </div>
 
           {/* Inspirational Narrative Quote Hook */}
           <h2 className="font-serif text-3xl font-medium tracking-tight text-text leading-tight mb-4">
-            "Turned my continuous lecture slides into structured custom
-            modules."
+            "The page-cited assistant pinpointed exactly where I was confused."
           </h2>
           <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-1">
-            Marcus P.
+            Sarah M.
           </p>
           <p className="text-[0.7rem] text-muted">
-            Computer Science student · Georgia Tech
+            Nursing Student · UT Austin
           </p>
         </div>
       </div>
 
-      {/* ── RIGHT COLUMN: AMBIENT DISPLAY / TESTIMONIAL SHOWCASE ── */}
-      <div className=" flex flex-col justify-between p-6 md:p-12 bg-surface border-r border-border/50 relative z-10">
+      {/* ── RIGHT COLUMN: REGISTRATION FORM ── */}
+      <div className="flex flex-col justify-between p-6 md:p-12 bg-surface border-r border-border/50 relative z-10">
         {/* Top Header Logo */}
         <header className="flex items-center justify-between w-full">
           <Link
             to="/"
             className="font-serif text-lg tracking-tight text-text font-semibold"
           >
-            Study<span className="text-accent">Flow</span>
+            Study<span className="text-accent">Fire</span>
           </Link>
           <span className="text-xs text-muted">
-            New here?{" "}
+            Already have an account?{" "}
             <Link
-              to="/"
+              to="/login"
               className="text-accent font-semibold hover:underline decoration-accent/30 underline-offset-4"
             >
-              Create an account
+              Log in
             </Link>
           </span>
         </header>
 
         {/* Center Card Content Form */}
-        <main className="w-full max-w-90 mx-auto my-12 lg:my-auto">
+        <main className="w-full max-w-90 mx-auto my-12 lg:my-auto py-8">
           <div className="mb-8">
             <h1 className="font-serif text-3xl font-bold tracking-tight text-text mb-2">
-              Welcome back
+              Start studying smarter
             </h1>
             <p className="text-xs text-muted leading-relaxed">
-              Log in to your context-locked workspace to resume your active
-              study sessions.
+              Create your account in seconds to immediately parse your first
+              textbook chapter or PDF.
             </p>
           </div>
 
@@ -113,7 +114,7 @@ export default function LoginPage(): React.JSX.Element {
                 width={16}
                 height={16}
               />
-              Continue with Google
+              Sign up with Google
             </button>
           </div>
 
@@ -122,8 +123,26 @@ export default function LoginPage(): React.JSX.Element {
             Or with email
           </div>
 
-          {/* Core Login Credentials Form */}
+          {/* Core Sign Up Registration Form */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-[0.68rem] font-bold uppercase tracking-wider text-muted mb-1.5 pl-0.5"
+              >
+                Full Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                required
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="Alex Morgan"
+                className="w-full bg-bg border border-border rounded-xl px-3.5 py-2.5 text-xs text-text placeholder-muted/50 outline-none focus:border-accent focus:ring-1 focus:ring-accent/10 transition duration-150 shadow-inner"
+              />
+            </div>
+
             <div>
               <label
                 htmlFor="email"
@@ -137,7 +156,7 @@ export default function LoginPage(): React.JSX.Element {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@university.edu"
+                placeholder="youname@email.com"
                 className="w-full bg-bg border border-border rounded-xl px-3.5 py-2.5 text-xs text-text placeholder-muted/50 outline-none focus:border-accent focus:ring-1 focus:ring-accent/10 transition duration-150 shadow-inner"
               />
             </div>
@@ -150,12 +169,6 @@ export default function LoginPage(): React.JSX.Element {
                 >
                   Password
                 </label>
-                <Link
-                  to="/"
-                  className="text-[0.68rem] font-medium text-muted hover:text-accent transition duration-150"
-                >
-                  Forgot password?
-                </Link>
               </div>
               <div className="relative">
                 <input
@@ -164,7 +177,7 @@ export default function LoginPage(): React.JSX.Element {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
+                  placeholder="Minimum 8 characters"
                   className="w-full bg-bg border border-border rounded-xl pl-3.5 pr-10 py-2.5 text-xs text-text placeholder-muted/50 outline-none focus:border-accent focus:ring-1 focus:ring-accent/10 transition duration-150 shadow-inner"
                 />
                 <button
@@ -177,37 +190,36 @@ export default function LoginPage(): React.JSX.Element {
               </div>
             </div>
 
-            {/* Remember Device Checkbox Option */}
-            <label className="flex items-center gap-2.5 mt-1 cursor-pointer group select-none">
-              <input
-                type="checkbox"
-                className="w-4 h-4 accent-accent rounded-md border-border bg-bg text-white focus:ring-0 cursor-pointer"
-              />
-              <span className="text-xs text-muted group-hover:text-text transition duration-150">
-                Keep me logged in for 30 days
-              </span>
-            </label>
+            <p className="text-xs text-muted mb-2 select-none text-center">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-accent font-semibold hover:underline decoration-accent/30 underline-offset-4"
+              >
+                Log in
+              </Link>
+            </p>
 
-            {/* Primary Log In Trigger Button */}
+            {/* Primary Sign Up Trigger Button */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full mt-4 bg-accent text-white py-3 rounded-xl text-xs font-bold shadow-md shadow-accent/15 hover:bg-accent/95 disabled:opacity-50 transform hover:-translate-y-px active:translate-y-0 disabled:transform-none transition duration-150 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full  bg-accent text-white py-3 rounded-xl text-xs font-bold shadow-md shadow-accent/15 hover:bg-accent/95 disabled:opacity-50 transform hover:-translate-y-px active:translate-y-0 disabled:transform-none transition duration-150 flex items-center justify-center gap-2 cursor-pointer"
             >
               {isLoading ? (
                 <>
                   <div className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  Verifying...
+                  Generating account...
                 </>
               ) : (
-                "Log into StudyFire"
+                "Create Free Account"
               )}
             </button>
           </form>
         </main>
 
         {/* Footer Support Notice */}
-        <section className="text-[0.68rem] text-muted text-center  ">
+        <section className="text-[0.68rem] text-muted text-center">
           Protected by context-locked storage secure nodes. <br />
           By continuing, you agree to our{" "}
           <Link to="/" className="underline hover:text-text">
