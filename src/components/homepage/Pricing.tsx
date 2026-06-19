@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Pricing() {
   return (
     <section className="px-6 md:px-12 py-25 max-w-300 mx-auto" id="pricing">
@@ -50,24 +52,24 @@ export default function Pricing() {
               Chat with PDF (20 messages)
             </li>
             <li className="flex items-start gap-2.5 text-sm text-muted opacity-50">
-              <span className="text-muted shrink-0 mt-0.5">–</span> Spaced
+              <span className="text-muted shrink-0 mt-0.5">-</span> Spaced
               repetition
             </li>
             <li className="flex items-start gap-2.5 text-sm text-muted opacity-50">
-              <span className="text-muted shrink-0 mt-0.5">–</span> Export
+              <span className="text-muted shrink-0 mt-0.5">-</span> Export
               (Anki, Notion, PDF)
             </li>
             <li className="flex items-start gap-2.5 text-sm text-muted opacity-50">
-              <span className="text-muted shrink-0 mt-0.5">–</span> Unlimited
+              <span className="text-muted shrink-0 mt-0.5">-</span> Unlimited
               messages
             </li>
           </ul>
-          <a
-            href="#"
+          <Link
+            to="#"
             className="w-full text-center block border border-border text-text bg-bg px-5 py-2 rounded-lg text-sm font-medium hover:border-accent hover:text-accent hover:bg-surface transition duration-200"
           >
             Get started free
-          </a>
+          </Link>
         </div>
 
         {/* PRO TIER */}
@@ -129,12 +131,12 @@ export default function Pricing() {
               Priority processing
             </li>
           </ul>
-          <a
-            href="#"
+          <Link
+            to="#"
             className="w-full text-center block bg-accent text-white px-5.5 py-2.25 rounded-lg text-sm font-semibold shadow-sm hover:bg-accent/95 transform hover:-translate-y-px transition duration-150"
           >
             Start Pro — 7 days free
-          </a>
+          </Link>
         </div>
 
         {/* TEAMS TIER */}
@@ -193,12 +195,12 @@ export default function Pricing() {
               Dedicated support
             </li>
           </ul>
-          <a
-            href="#"
+          <Link
+            to="#"
             className="w-full text-center block border border-border text-text bg-bg px-5 py-2 rounded-lg text-sm font-medium hover:border-accent hover:text-accent hover:bg-surface transition duration-200"
           >
             Contact us
-          </a>
+          </Link>
         </div>
       </div>
     </section>

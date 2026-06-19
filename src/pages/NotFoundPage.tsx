@@ -118,7 +118,8 @@ export default function NotFoundPage(): React.JSX.Element {
       {/* ── FOOTER DECORATION ── */}
       <footer className="border-t border-border bg-surface py-6 px-6 text-center text-[0.7rem] text-muted">
         <div>
-          © 2026 StudyFlow Inc. All tools context-locked to your materials.
+          © {new Date().getFullYear()} StudyFire Inc. All tools context-locked
+          to your materials.
         </div>
       </footer>
     </div>

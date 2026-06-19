@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 export default function Layout(): React.JSX.Element {
   return (
-    <div className="bg-bg text-text font-sans antialiased selection:bg-accent/15 overflow-x-hidden min-h-screen">
+    <div className="bg-bg flex flex-col text-text font-sans antialiased selection:bg-accent/15 overflow-x-hidden min-h-screen">
       <Header />
 
       <Outlet />

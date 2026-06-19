@@ -1,57 +1,60 @@
-export default function Footer() {
+import React from "react";
+import { Link } from "react-router";
+
+export default function Footer(): React.JSX.Element {
   return (
-    <footer className="border-t border-border bg-surface px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between max-w-300 mx-auto gap-5 text-center">
-      <a href="#" className="font-serif text-md text-muted font-semibold">
+    <footer className="border-t border-border bg-surface px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-5 text-center">
+      <Link to="/" className="font-serif text-md text-muted font-semibold">
         Study<span className="text-accent">Fire</span>
-      </a>
+      </Link>
       <ul className="flex flex-wrap gap-7 justify-center list-none">
         <li>
-          <a
-            href="#"
+          <Link
+            to="/#features"
             className="text-xs text-muted hover:text-text transition duration-200"
           >
             Features
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#"
+          <Link
+            to="/#pricing"
             className="text-xs text-muted hover:text-text transition duration-200"
           >
             Pricing
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#"
+          <Link
+            to="/blog"
             className="text-xs text-muted hover:text-text transition duration-200"
           >
             Blog
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#"
+          <Link
+            to="/privacy"
             className="text-xs text-muted hover:text-text transition duration-200"
           >
             Privacy
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#"
+          <Link
+            to="/terms"
             className="text-xs text-muted hover:text-text transition duration-200"
           >
             Terms
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#"
+          <Link
+            to="/contact"
             className="text-xs text-muted hover:text-text transition duration-200"
           >
             Contact
-          </a>
+          </Link>
         </li>
       </ul>
       <p className="text-xs text-muted">

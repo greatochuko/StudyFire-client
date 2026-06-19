@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 export default function Hero() {
   const [activeTab, setActiveTab] = useState<"quiz" | "flash" | "chat">("quiz");
@@ -36,18 +37,18 @@ export default function Hero() {
             highlighting and more time actually learning.
           </p>
           <div className="flex flex-wrap gap-3 items-center justify-center lg:justify-start mb-12">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="bg-accent text-white px-8 py-3.5 rounded-xl text-base font-semibold shadow-md shadow-accent/10 hover:bg-accent/95 transform hover:-translate-y-px transition duration-150"
             >
               Upload your first PDF — free
-            </a>
-            <a
-              href="#how"
+            </Link>
+            <Link
+              to="#how"
               className="border border-border bg-surface text-muted px-8 py-3.5 rounded-xl text-base font-medium hover:border-accent hover:text-accent transition duration-200 shadow-sm"
             >
               See how it works
-            </a>
+            </Link>
           </div>
           <div className="flex items-center justify-center lg:justify-start gap-3">
             <div className="flex">

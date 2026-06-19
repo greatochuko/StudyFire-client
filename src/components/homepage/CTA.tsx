@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function CTA() {
   return (
     <section className="px-6 md:px-12 py-25 text-center relative overflow-hidden bg-accent-lo/30 border-t border-b border-border/50">
@@ -17,18 +19,18 @@ export default function CTA() {
           card, no setup, no friction.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <a
-            href="#"
+          <Link
+            to="#"
             className="bg-accent text-white px-8 py-3.5 rounded-xl text-base font-semibold shadow-md shadow-accent/10 hover:bg-accent/95 transform hover:-translate-y-px transition duration-150"
           >
             Upload your first PDF — free
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="#"
             className="border border-border bg-surface text-muted px-8 py-3.5 rounded-xl text-base font-medium hover:border-accent hover:text-accent transition duration-200 shadow-sm"
           >
             See a live demo
-          </a>
+          </Link>
         </div>
         <p className="text-xs text-muted mt-5">
           Free forever · No card required · Cancel Pro anytime
