@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Header(): React.JSX.Element {
   const [activeSection, setActiveSection] = useState<string>("");
   const location = useLocation();
+
+  const { isAuthenticated, isLoading } = useAuth();
 
   // 1. Handle scrolling to the section when the URL hash changes
   useEffect(() => {
@@ -88,19 +91,40 @@ export default function Header(): React.JSX.Element {
           </Link>
         </li>
       </ul>
-      <div className="flex gap-3 items-center">
-        <Link
-          to="/login"
-          className="text-muted px-5 py-2 rounded-lg text-sm font-medium hover:text-text transition-colors duration-200"
-        >
-          Log in
-        </Link>
-        <Link
-          to="/signup"
-          className="bg-accent text-white px-5.5 py-2.25 rounded-lg text-sm font-semibold shadow-sm hover:bg-accent/95 transform hover:-translate-y-px transition duration-150 inline-block"
-        >
-          Start free
-        </Link>
+
+      {/* ── CONTEXT-DRIVEN AUTHENTICATION ACTIONS BLOCK ── */}
+      <div className="flex gap-3 items-center min-w-37.5 justify-end">
+        {isLoading ? (
+          /* Subtle skeleton placeholder loader during verification check */
+          <div className="animate-pulse flex gap-3 items-center">
+            <div className="w-14 h-9 bg-border rounded-md" />
+            <div className="w-28 h-9 bg-border rounded-lg" />
+          </div>
+        ) : isAuthenticated ? (
+          /* High-priority access link for already verified users */
+          <Link
+            to="/dashboard"
+            className="bg-accent text-white px-5.5 py-2.25 rounded-lg text-sm font-semibold shadow-sm hover:bg-accent/95 transform hover:-translate-y-px transition duration-150 inline-block"
+          >
+            Go to Dashboard →
+          </Link>
+        ) : (
+          /* Traditional configuration for visitors */
+          <>
+            <Link
+              to="/login"
+              className="text-muted px-5 py-2 rounded-lg text-sm font-medium hover:text-text transition-colors duration-200"
+            >
+              Log in
+            </Link>
+            <Link
+              to="/signup"
+              className="bg-accent text-white px-5.5 py-2.25 rounded-lg text-sm font-semibold shadow-sm hover:bg-accent/95 transform hover:-translate-y-px transition duration-150 inline-block"
+            >
+              Start free
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

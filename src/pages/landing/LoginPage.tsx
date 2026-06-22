@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
+import { useAuth } from "../../context/AuthContext";
 
 export default function LoginPage(): React.JSX.Element {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { login, isLoading } = useAuth();
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    setIsLoading(true);
-    // Handle auth submission logic here
-    setTimeout(() => setIsLoading(false), 1200);
+    login(email, password);
   };
 
   return (
