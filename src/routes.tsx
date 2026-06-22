@@ -5,6 +5,16 @@ import LoginPage from "./pages/landing/LoginPage";
 import { createBrowserRouter } from "react-router";
 import SignupPage from "./pages/landing/SignupPage";
 import AuthWrapper from "./components/layout/AuthWrapper";
+import DashboardPage from "./pages/dashboard/DashboardPage";
+import DashboardLayout from "./components/dashboard/DashboardLayout";
+import DashboardNotFoundPage from "./pages/dashboard/DashboardNotFoundPage";
+import MyDocumentsPage from "./pages/dashboard/MyDocumentsPage";
+import FlashcardsPage from "./pages/dashboard/FlashcardsPage";
+import FlashcardSessionPage from "./pages/dashboard/FlashcardSessionPage";
+import QuizzesPage from "./pages/dashboard/QuizzesPage";
+import QuizActiveSessionPage from "./pages/dashboard/QuizActiveSessionPage";
+import QuizResultsPage from "./pages/dashboard/QuizResultsPage";
+import StudyCoachPage from "./pages/dashboard/StudyCoachPage";
 
 export const router = createBrowserRouter([
   {
@@ -15,8 +25,23 @@ export const router = createBrowserRouter([
         element: <Layout />,
         children: [
           { index: true, element: <HomePage /> },
-          { path: "/login", element: <LoginPage /> },
-          { path: "/signup", element: <SignupPage /> },
+          { path: "login", element: <LoginPage /> },
+          { path: "signup", element: <SignupPage /> },
+        ],
+      },
+      {
+        path: "/dashboard",
+        element: <DashboardLayout />,
+        children: [
+          { index: true, element: <DashboardPage /> },
+          { path: "materials", element: <MyDocumentsPage /> },
+          { path: "flashcards", element: <FlashcardsPage /> },
+          { path: "flashcards/:id", element: <FlashcardSessionPage /> },
+          { path: "quizzes", element: <QuizzesPage /> },
+          { path: "quizzes/:id", element: <QuizActiveSessionPage /> },
+          { path: "quizzes/:id/results", element: <QuizResultsPage /> },
+          { path: "coach", element: <StudyCoachPage /> },
+          { path: "*", element: <DashboardNotFoundPage /> },
         ],
       },
       { path: "*", element: <NotFoundPage /> },

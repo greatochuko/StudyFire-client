@@ -25,11 +25,11 @@ export default function StudyFireLanding(): React.JSX.Element {
       {/* ── HOW IT WORKS SECTION ── */}
       <HowItWorks />
 
-      {/* ── TESTIMONIALS SECTION ── */}
-      <Testimonials />
-
       {/* ── PRICING SECTION ── */}
       <Pricing />
+
+      {/* ── TESTIMONIALS SECTION ── */}
+      <Testimonials />
 
       {/* ── FINAL CALL TO ACTION ── */}
       <CTA />
