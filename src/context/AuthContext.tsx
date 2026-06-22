@@ -1,12 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-// Define the shape of your User object
+// Define the shape of your User object including billing allocations
 interface User {
   id: string;
   email: string;
   fullName?: string;
   createdAt: string;
+  // Dynamic billing attributes bound to user runtime state
+  planTier: PlanTier;
+  autoRenew: boolean;
+  expiresAt?: string; // ISO string or specific calendar termination bounds
+  stripeCustomerId?: string;
 }
+
+export type PlanTier = "free" | "pro";
 
 // Define the interface for the Auth Context state and actions
 interface AuthContextType {
@@ -15,6 +22,11 @@ interface AuthContextType {
   isLoading: boolean;
   login: (email: string, pass: string) => Promise<void>;
   signup: (name: string, email: string, pass: string) => Promise<void>;
+  updateSubscriptionState: (
+    newTier: User["planTier"],
+    autoRenew: boolean,
+    expiresAt?: string,
+  ) => void;
   logout: () => Promise<void>;
 }
 
@@ -61,6 +73,10 @@ export function AuthProvider({
         email,
         fullName: "Alex Morgan",
         createdAt: new Date().toISOString(),
+        planTier: "free", // Defaults to standard allocation framework
+        autoRenew: false,
+        stripeCustomerId:
+          "cus_mock_" + Math.random().toString(36).substring(2, 8),
       };
 
       localStorage.setItem("sf_user", JSON.stringify(mockUser));
@@ -88,6 +104,10 @@ export function AuthProvider({
         email,
         fullName,
         createdAt: new Date().toISOString(),
+        planTier: "free",
+        autoRenew: false,
+        stripeCustomerId:
+          "cus_mock_" + Math.random().toString(36).substring(2, 8),
       };
 
       localStorage.setItem("sf_user", JSON.stringify(mockUser));
@@ -98,6 +118,23 @@ export function AuthProvider({
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Replaces updatePlanTier to handle complex subscription lifecycle updates explicitly
+  const updateSubscriptionState = (
+    newTier: User["planTier"],
+    autoRenew: boolean,
+    expiresAt?: string,
+  ) => {
+    if (!user) return;
+    const updatedUser: User = {
+      ...user,
+      planTier: newTier,
+      autoRenew,
+      expiresAt,
+    };
+    localStorage.setItem("sf_user", JSON.stringify(updatedUser));
+    setUser(updatedUser);
   };
 
   // Handle system logouts and storage flushes
@@ -120,6 +157,7 @@ export function AuthProvider({
         isLoading,
         login,
         signup,
+        updateSubscriptionState,
         logout,
       }}
     >

@@ -31,10 +31,12 @@ export default function DashboardLayout(): React.JSX.Element {
     { name: "Settings", path: "/dashboard/settings", icon: "⚙️" },
   ];
 
+  // Dynamic values derived directly from auth tier context
+  const isPremium = user?.planTier === "pro";
+
   return (
     <div className="bg-bg text-text relative flex min-h-screen w-full overflow-hidden font-sans antialiased">
       {/* ── MOBILE BACKING DIMMER OVERLAY ── */}
-      {/* Renders when sidebar is active/visible to dim background viewport */}
       <div
         onClick={() => setIsSidebarOpen(false)}
         className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-xs transition-opacity duration-300 md:hidden ${
@@ -55,7 +57,6 @@ export default function DashboardLayout(): React.JSX.Element {
         <div className="flex flex-col gap-6">
           {/* Logo Brand Identifier Panel Workspace Header */}
           <div className="mt-2 flex items-center justify-between px-2 md:justify-center md:px-0">
-            {/* Show full brand identity if open on mobile/desktop */}
             <div
               className={`flex flex-col ${!isSidebarOpen ? "md:hidden" : "flex"}`}
             >
@@ -65,19 +66,17 @@ export default function DashboardLayout(): React.JSX.Element {
               >
                 Study<span className="text-accent">Fire</span>
               </Link>
-              <span className="text-muted mt-0.5 text-[0.62rem] font-semibold tracking-wider uppercase">
+              <span className="text-muted mt-0.5 line-clamp-1 text-[0.62rem] font-semibold tracking-wider uppercase">
                 Smarter study tool for everyone
               </span>
             </div>
 
-            {/* Show mini monogram logo slot when condensed on desktop rails */}
             <span
               className={`text-accent hidden font-serif text-lg font-bold md:block ${isSidebarOpen ? "md:hidden" : "md:block"}`}
             >
               SF
             </span>
 
-            {/* Accessible closing button option only visible inside mobile drawer view */}
             <button
               onClick={() => setIsSidebarOpen(false)}
               className="text-muted hover:text-text rounded-lg p-1 md:hidden"
@@ -124,25 +123,46 @@ export default function DashboardLayout(): React.JSX.Element {
             className={`bg-bg/40 border-border relative overflow-hidden rounded-2xl border p-4 text-xs ${isSidebarOpen ? "block" : "block md:hidden"}`}
           >
             <div className="mb-2 flex items-center justify-between">
-              <span className="text-accent text-[0.65rem] font-bold tracking-wider uppercase">
-                Plan Status
+              <span className="text-muted text-[0.65rem] font-bold tracking-wider uppercase">
+                Tier Allocation
               </span>
-              <span className="bg-accent-lo text-accent rounded-md px-1.5 py-0.5 text-[0.6rem] font-bold tracking-wide uppercase">
-                Active
+              <span
+                className={`rounded-md px-1.5 py-0.5 text-[0.6rem] font-bold tracking-wide uppercase ${
+                  isPremium
+                    ? "bg-accent text-white"
+                    : "bg-accent-lo text-accent"
+                }`}
+              >
+                {isPremium ? "Pro" : "Standard"}
               </span>
             </div>
-            <h4 className="text-text mb-1 text-sm font-bold">Free Beta</h4>
-            <p className="text-muted mb-3 text-[0.7rem] leading-snug">
-              0 of 3 monthly generations used.
+
+            <h4 className="text-text mb-1 text-sm font-bold">
+              {isPremium ? "Scholar Pro" : "Free Framework"}
+            </h4>
+
+            <p className="text-muted mb-3 line-clamp-2 text-[0.7rem] leading-snug">
+              {isPremium
+                ? "8 of 20 premium documents configured."
+                : "3 of 3 standard context boundaries reached."}
             </p>
+
             <div className="bg-border mb-3 h-1 w-full overflow-hidden rounded-full">
-              <div className="bg-accent h-1 w-[10%] rounded-full" />
+              <div
+                className={`h-1 rounded-full ${isPremium ? "bg-accent" : "bg-red-500"}`}
+                style={{ width: isPremium ? "40%" : "100%" }}
+              />
             </div>
+
             <Link
-              to="/billing"
-              className="bg-accent hover:bg-accent/95 shadow-accent/15 block w-full rounded-lg py-1.5 text-center text-[0.7rem] font-bold text-white shadow-sm transition duration-150"
+              to="/dashboard/billing"
+              className={`block w-full rounded-lg py-1.5 text-center text-[0.7rem] font-bold shadow-sm transition duration-150 ${
+                isPremium
+                  ? "border-border/80 text-text hover:bg-bg/80 border"
+                  : "bg-accent hover:bg-accent/95 shadow-accent/15 text-white"
+              }`}
             >
-              Upgrade Plan
+              {isPremium ? "Manage Billing Status" : "Upgrade Plan"}
             </Link>
           </div>
 

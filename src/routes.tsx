@@ -15,6 +15,10 @@ import QuizzesPage from "./pages/dashboard/QuizzesPage";
 import QuizActiveSessionPage from "./pages/dashboard/QuizActiveSessionPage";
 import QuizResultsPage from "./pages/dashboard/QuizResultsPage";
 import StudyCoachPage from "./pages/dashboard/StudyCoachPage";
+import SettingsPage from "./pages/dashboard/SettingsPage";
+import BillingPage from "./pages/dashboard/BillingPage";
+import PrivacyPolicyPage from "./pages/landing/PrivacyPolicyPage";
+import TermsOfServicePage from "./pages/landing/TermsOfServicePage";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +31,8 @@ export const router = createBrowserRouter([
           { index: true, element: <HomePage /> },
           { path: "login", element: <LoginPage /> },
           { path: "signup", element: <SignupPage /> },
+          { path: "privacy-policy", element: <PrivacyPolicyPage /> },
+          { path: "terms-of-service", element: <TermsOfServicePage /> },
         ],
       },
       {
@@ -41,6 +47,8 @@ export const router = createBrowserRouter([
           { path: "quizzes/:id", element: <QuizActiveSessionPage /> },
           { path: "quizzes/:id/results", element: <QuizResultsPage /> },
           { path: "coach", element: <StudyCoachPage /> },
+          { path: "settings", element: <SettingsPage /> },
+          { path: "billing", element: <BillingPage /> },
           { path: "*", element: <DashboardNotFoundPage /> },
         ],
       },

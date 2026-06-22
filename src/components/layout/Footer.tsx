@@ -3,15 +3,15 @@ import { Link } from "react-router";
 
 export default function Footer(): React.JSX.Element {
   return (
-    <footer className="border-t border-border bg-surface px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-5 text-center">
-      <Link to="/" className="font-serif text-md text-muted font-semibold">
+    <footer className="border-border bg-surface flex flex-col items-center justify-between gap-5 border-t px-6 py-10 text-center md:flex-row md:px-12">
+      <Link to="/" className="text-md text-muted font-serif font-semibold">
         Study<span className="text-accent">Fire</span>
       </Link>
-      <ul className="flex flex-wrap gap-7 justify-center list-none">
+      <ul className="flex list-none flex-wrap justify-center gap-7">
         <li>
           <Link
             to="/#features"
-            className="text-xs text-muted hover:text-text transition duration-200"
+            className="text-muted hover:text-text text-xs transition duration-200"
           >
             Features
           </Link>
@@ -19,7 +19,7 @@ export default function Footer(): React.JSX.Element {
         <li>
           <Link
             to="/#pricing"
-            className="text-xs text-muted hover:text-text transition duration-200"
+            className="text-muted hover:text-text text-xs transition duration-200"
           >
             Pricing
           </Link>
@@ -27,23 +27,23 @@ export default function Footer(): React.JSX.Element {
         <li>
           <Link
             to="/blog"
-            className="text-xs text-muted hover:text-text transition duration-200"
+            className="text-muted hover:text-text text-xs transition duration-200"
           >
             Blog
           </Link>
         </li>
         <li>
           <Link
-            to="/privacy"
-            className="text-xs text-muted hover:text-text transition duration-200"
+            to="/privacy-policy"
+            className="text-muted hover:text-text text-xs transition duration-200"
           >
             Privacy
           </Link>
         </li>
         <li>
           <Link
-            to="/terms"
-            className="text-xs text-muted hover:text-text transition duration-200"
+            to="/terms-of-service"
+            className="text-muted hover:text-text text-xs transition duration-200"
           >
             Terms
           </Link>
@@ -51,13 +51,13 @@ export default function Footer(): React.JSX.Element {
         <li>
           <Link
             to="/contact"
-            className="text-xs text-muted hover:text-text transition duration-200"
+            className="text-muted hover:text-text text-xs transition duration-200"
           >
             Contact
           </Link>
         </li>
       </ul>
-      <p className="text-xs text-muted">
+      <p className="text-muted text-xs">
         © 2026 StudyFire. All rights reserved.
       </p>
     </footer>
